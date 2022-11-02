@@ -1,0 +1,17 @@
+html, body, #app {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Source Serif 4', serif;
+}
+
+.wip {
+  font-size: 2em;
+}
