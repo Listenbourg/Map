@@ -1,0 +1,62 @@
+{
+    "Flußerde": {
+        "color": "#d17dd4",
+        "departments": [
+            [26, "Frinterland"],
+            [27, "Jesusarh"],
+            [28, "Fisherein"],
+            [29, "Maarland"],
+            [30, "Centiertflußland"],
+            [31, "Talwortes"],
+            [32, "Kanalerde"]
+        ]
+    },
+    "Kusterde": {
+        "color": "#30c968",
+        "departments": [
+            [22, "Auseburg"],
+            [23, "Mornland"],
+            [24, "Wasserland"],
+            [25, "Kleinland"],
+            [33, "Virgolkust"],
+            [34, "Bachßland"],
+            [35, "Strander"]
+        ]
+    },
+    "Mitteland": {
+        "color": "#ccfa78",
+        "departments": [
+            [1, "Äußeres Galizien"],
+            [2, "Geldland"],
+            [3, "Oliveweißland"],
+            [4, "Chrüterkraft"],
+            [5, "Missbalder"],
+            [6, "Centürland"],
+            [7, "Herkunftland"],
+            [8, "Langerde"],
+            [9, "Siegesschlucht"],
+            [10, "Aschenbach"],
+            [11, "Serishluss"],
+            [12, "Lichtenland"],
+            [13, "Achlußluss"]
+        ]
+    },
+    "Caséière": {
+        "color": "#3b8dc4",
+        "departments": [
+            [14, "Carmenle"],
+            [15, "Franquette"],
+            [16, "Portaière"]
+        ]
+    },
+    "Adriàs": {
+        "color": "#eb4034",
+        "departments": [
+            [17, "Adriàs Norte"],
+            [18, "Adriàs Sur"],
+            [19, "La pequeña"],
+            [20, "Ardentia"],
+            [21, "Llamas Costilla"]
+        ]
+    }
+}
