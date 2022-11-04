@@ -4,6 +4,7 @@
 
 ```bash
 git clone https://github.com/Listenbourg/Map
+cd Map
 npm install
 ```
 
