@@ -1,13 +1,23 @@
+:root {
+	--header-height: 80px;
+}
+
+@media (max-width: 600px) {
+	:root {
+		--header-height: 40px;
+	}
+}
+
 html, body, #app {
   	width: 100vw;
   	height: 100vh;
   	padding: 0;
   	margin: 0;
     overflow: hidden;
+	font-family: "HK Grotesk", sans-serif;
 }
 
 #app {
-  	font-family: 'Source Serif 4', serif;
 	display: flex;
 	flex-direction: column;
 }
@@ -15,11 +25,13 @@ html, body, #app {
 header {
 	background-color: rgba(255, 255, 255, .4);
 	border-bottom: 1px solid #ebebeb;
-	height: 80px;
+	height: var(--header-height);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+	z-index: 1;
 }
 
 .header-title {
@@ -37,13 +49,26 @@ h1 {
     margin: 5px;
 }
 
+/* smaller title on mobile */
+@media (max-width: 600px) {
+	.header-title iconify-icon, .header-buttons iconify-icon {
+		font-size: 1em;
+	}
+
+	h1 {
+		font-size: 1em;
+	}
+}
+
 .header-buttons * {
 	color: black;
 }
 
 .svg-wrapper {
+	user-select: none;
+	-webkit-user-select: none;
 	flex: 1;
-	height: calc(100% - 80px);
+	height: calc(100% - var(--header-height));
 	position: relative;
 	text-align: center;
 }

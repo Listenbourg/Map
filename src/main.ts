@@ -17,7 +17,7 @@ app.innerHTML = /* html */ `
   <header>
     <div class="header-title">
       <iconify-icon icon="mdi:map-marker"></iconify-icon>
-      <h1>Listenbourg Maps</h1>
+      <h1>ListenMaps</h1>
     </div>
     <div class="header-buttons">
       <a href="https://github.com/Listenbourg/Map" target="_blank">
@@ -33,12 +33,14 @@ app.innerHTML = /* html */ `
 
 window.addEventListener("load", () => {
   const svgObject = document.querySelector("object")!.contentDocument!;
+  const svgEl = svgObject.querySelector("svg")!;
   const { setTooltip, hideTooltip } = Tooltip(
     document.querySelector("object")!,
     app.querySelector(".region-name")!
   );
   const groups = svgObject.querySelectorAll("g");
   const paths = svgObject.querySelectorAll("path");
+  const svgDepTexts: SVGTextElement[] = [];
 
   const regionsPaths = Object.fromEntries(
     Object.keys(regionData).map((name) => [
@@ -53,19 +55,73 @@ window.addEventListener("load", () => {
     depName: string;
   } | null;
 
+  const minZoom = 0.9;
+
   let hovered: Hovered = null;
+  let zoom = minZoom;
+  let offsetX = 0;
+  let offsetY = 0;
+  let dragging = false;
+
+  function updateTransform() {
+    svgEl.style.transform = `translate(${offsetX * zoom}px, ${
+      offsetY * zoom
+    }px) scale(${zoom})`;
+  }
+
+  updateTransform();
+
+  svgObject.addEventListener(
+    "wheel",
+    (e: WheelEvent) => {
+      const oldZoom = zoom;
+      zoom = Math.max(minZoom, zoom - e.deltaY * 0.01);
+      updateTransform();
+      svgEl.style.cursor = zoom === minZoom ? "pointer" : "grab";
+
+      if (zoom > 1.5 && oldZoom <= 1.5) {
+        svgEl.style.setProperty('--text-display', 'block');
+        hideTooltip();
+      } else if (zoom <= 1.5 && oldZoom > 1.5) {
+        svgEl.style.setProperty('--text-display', 'none');
+      }
+
+      svgEl.style.setProperty('--text-fz', `${Math.min(1, 1 / zoom * 2)}rem`);
+
+      e.preventDefault();
+    },
+    { passive: false }
+  );
+
+  svgObject.addEventListener("mousedown", () => {
+    dragging = true;
+    svgEl.style.cursor = "grabbing";
+  });
+  svgObject.addEventListener("mouseup", () => {
+    dragging = false;
+    svgEl.style.cursor = zoom === minZoom ? "pointer" : "grab";
+  });
 
   svgObject.addEventListener("mousemove", (e) => {
     let isHovered = false;
-    paths.forEach((d) => {
+    groups.forEach((d) => {
       if (d.matches(":hover")) isHovered = true;
     });
     if (!isHovered) {
       hideTooltip();
-    } else if (hovered) {
+    } else if (hovered && zoom < 1.5) {
       setTooltip(e, `${hovered.depID} ${hovered.depName} (${hovered.region})`);
     }
+
+    if (dragging) {
+      offsetX += e.movementX / zoom;
+      offsetY += e.movementY / zoom;
+      updateTransform();
+    }
   });
+
+  svgEl.style.overflow = "hidden";
+  svgEl.style.cursor = "pointer";
 
   groups.forEach((group) => {
     const path = group.querySelector("path")!;
@@ -74,11 +130,30 @@ window.addEventListener("load", () => {
     const regionName = getRegionByDepartment(groupID)!;
     const regionColor = getRegionColor(regionName as RegionName);
 
+    const textEl = svgObject.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "text"
+    );
+    const pathRect = path.getBBox();
+    console.log(pathRect, group.querySelector("path")); // il sert à qqch ce
+      textEl.setAttribute("x", (pathRect.x + pathRect.width / 2).toString());
+      textEl.setAttribute("y", (pathRect.y + pathRect.height / 2).toString());
+      textEl.setAttribute("dominant-baseline", "middle");
+      textEl.setAttribute("text-anchor", "middle");
+      textEl.style.userSelect = "none";
+      textEl.style.webkitUserSelect = "none";
+      textEl.style.pointerEvents = "none";
+      // textEl.setAttribute("fill", "black");
+      textEl.innerHTML = departmentName;
+      group.appendChild(textEl);
+      svgDepTexts.push(textEl);
+    
+
     path.style.transition = "fill 0.25s ease";
 
-    path.addEventListener("mouseenter", () => {
-      for (const path of regionsPaths[regionName])
-        path.style.fill = regionColor;
+    group.addEventListener("mouseenter", () => {
+      for (const regPath of regionsPaths[regionName])
+        regPath.style.fill = regionColor;
       path.style.fill = lighten(regionColor);
       hovered = {
         region: regionName as RegionName,
@@ -87,7 +162,7 @@ window.addEventListener("load", () => {
       };
     });
 
-    path.addEventListener("mouseleave", () => {
+    group.addEventListener("mouseleave", () => {
       for (const path of regionsPaths[regionName]) path.style.fill = "#D6D6D6";
     });
   });
