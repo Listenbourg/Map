@@ -1,0 +1,131 @@
+@import url("https://fonts.cdnfonts.com/css/hk-groteks");
+
+* {
+    font-family: "HK Grotesk", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.svg-wrapper {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 0;
+}
+
+html,
+body,
+#app {
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    padding: 20px;
+    border-bottom: 1px solid #323135;
+}
+
+.header,
+.credits {
+    background-color: #fff;
+    width: 100%;
+    z-index: 10;
+}
+
+.InnerHeader {
+    height: 32px;
+    width: 100%;
+    margin: 0;
+    background-image: url(./assets/ListenMap.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.header-buttons a,
+.header-buttons a svg {
+    height: 100%;
+    display: block;
+}
+
+.header-buttons a {
+    color: #000;
+    text-decoration: none;
+}
+
+.header-buttons a:hover {
+    color: #c91212;
+}
+
+/* prefers dark */
+
+@media (prefers-color-scheme: dark) {
+    body,
+    #app {
+        background-color: #1c1b1f;
+        color: #fff;
+    }
+
+    .InnerHeader {
+        background-image: url(./assets/ListenMap-Dark.svg);
+    }
+
+    .header,
+    .credits {
+        background-color: #252429;
+        border-color: #323135;
+    }
+
+    .header-buttons a {
+        color: #fff;
+    }
+
+    .header-buttons a:hover {
+        color: #ff2828;
+    }
+}
+
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+h4 {
+    margin-top: 40px !important;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 50%;
+}
+
+.credits {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #323135;
+    font-size: 12px;
+    color: #555;
+    font-weight: 500;
+}
+
+.region-name {
+    position: absolute;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 3px 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    user-select: none;
+    border-radius: 8px;
+    pointer-events: none;
+    display: none;
+}
