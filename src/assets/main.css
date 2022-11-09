@@ -32,8 +32,10 @@ body,
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
-    border-bottom: 1px solid #323135;
+    border-bottom: 1px solid #55555544;
 }
 
 .header,
@@ -43,21 +45,8 @@ body,
     z-index: 10;
 }
 
-.InnerHeader {
+.header-logo, .header-buttons, .header-buttons svg {
     height: 32px;
-    width: 100%;
-    margin: 0;
-    background-image: url(./assets/ListenMap.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.header-buttons a,
-.header-buttons a svg {
-    height: 100%;
-    display: block;
 }
 
 .header-buttons a {
@@ -78,10 +67,6 @@ body,
         color: #fff;
     }
 
-    .InnerHeader {
-        background-image: url(./assets/ListenMap-Dark.svg);
-    }
-
     .header,
     .credits {
         background-color: #252429;
@@ -95,17 +80,6 @@ body,
     .header-buttons a:hover {
         color: #ff2828;
     }
-}
-
-.material-symbols-outlined {
-    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
-}
-
-h4 {
-    margin-top: 40px !important;
-    font-weight: 500;
-    font-size: 16px;
-    opacity: 50%;
 }
 
 .credits {
