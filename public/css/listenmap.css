@@ -1,0 +1,50 @@
+:root {
+	--logo: url("../assets/logo.svg");
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--logo: url("../assets/logo_dark.svg");
+	}
+}
+#tooltip {
+	display: none;
+	position: absolute;
+	background-color: var(--clr-bg-alt);
+	padding: 8px;
+	color: white;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--clr-border);
+	transition-duration: 0s;
+}
+
+main {
+	padding: 0;
+	gap: 0 !important;
+	border-bottom: 1px solid var(--clr-border);
+}
+
+.header .header-logo {
+	height: 64px;
+}
+
+body {
+	position: relative;
+	display: block;
+}
+body > *:not(main) {
+	padding: 8px 16px;
+}
+body > main {
+	position: relative;
+	padding: 0px;
+}
+
+@media screen and (min-width: 768px) {
+	body > *:not(main) {
+		padding: 8px 64px;
+	}
+	body > main {
+		padding: 0px;
+	}
+}
