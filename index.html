@@ -1,22 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <!-- Main Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Découvrez la carte du Listenbourg !" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>ListenMaps</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ListenMaps</title>
+    <!-- OpenGraph data -->
+    <meta property="og:title" content="ListenMap" />
+    <meta property="og:site_name" content="ListenMap" />
+    <meta property="og:url" content="https://listenbourg.org/" />
+    <meta
+      property="og:description"
+      content="Découvrez la carte du Listenbourg !"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/website_preview.png" />
 
-  <link rel="icon" type="image/x-icon" href="/listenbourg.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/hk-groteks" rel="stylesheet">
-  <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
-</head>
+    <!-- Apple Mobile -->
+    <meta name="apple-mobile-web-app-title" content="ListenMap" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
-<body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+    <!-- Load Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz@8..60&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/hk-groteks" rel="stylesheet" />
 
+    <!-- Theme data -->
+    <meta
+      name="theme-color"
+      content="#fff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#28272b"
+      media="(prefers-color-scheme: dark)"
+    />
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
 </html>

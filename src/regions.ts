@@ -1,4 +1,4 @@
-import regionData_ from "./assets/regions.json";
+import regionData_ from './assets/regions.json';
 
 export const regionData = regionData_;
 
@@ -9,7 +9,7 @@ export function getRegionPaths(
   region: RegionName
 ): SVGPathElement[] {
   return regionData[region].departments
-    .map(([id]) => svg.getElementById(String(id))?.querySelector("path"))
+    .map(([id]) => svg.getElementById(String(id))?.querySelector('path'))
     .filter((path) => path !== undefined) as SVGPathElement[];
 }
 
@@ -28,7 +28,7 @@ export function getDepartmentName(id: number): string {
     for (const department of departments)
       if (department[0] === id) return department[1] as string;
   console.error('No department found for id "' + id + '"');
-  return "";
+  return '';
 }
 
 /**
@@ -38,5 +38,5 @@ export function getRegionByDepartment(id: number) {
   for (const [name, { departments }] of Object.entries(regionData))
     if (departments.map((d) => d[0]).includes(id)) return name;
   console.error('No region found for department "' + id + '"');
-  return "";
+  return '';
 }

@@ -1,6 +1,6 @@
 {
     "Flußerde": {
-        "color": "#d17dd4",
+        "color": ["#d17dd4", "#533254"],
         "departments": [
             [26, "Frinterland"],
             [27, "Jesusarh"],
@@ -12,7 +12,7 @@
         ]
     },
     "Kusterde": {
-        "color": "#30c968",
+        "color": ["#30c968", "#156131"],
         "departments": [
             [22, "Auseburg"],
             [23, "Mornland"],
@@ -24,7 +24,7 @@
         ]
     },
     "Mitteland": {
-        "color": "#ccfa78",
+        "color": ["#ccfa78", "#4c692e"],
         "departments": [
             [1, "Äußeres Galizien"],
             [2, "Geldland"],
@@ -42,7 +42,7 @@
         ]
     },
     "Caséière": {
-        "color": "#3b8dc4",
+        "color": ["#3b8dc4", "#215273"],
         "departments": [
             [14, "Carmenle"],
             [15, "Franquette"],
@@ -50,7 +50,7 @@
         ]
     },
     "Adriàs": {
-        "color": "#eb4034",
+        "color": ["#eb4034", "#7a201a"],
         "departments": [
             [17, "Adriàs Norte"],
             [18, "Adriàs Sur"],
