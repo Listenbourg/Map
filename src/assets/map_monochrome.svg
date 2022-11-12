@@ -20,17 +20,29 @@
 				stroke-miterlimit: 10;
 			}
 
-			@media (prefers-color-scheme: dark) { 
-				.st0 {
-					fill: #252429;
-					stroke: #323135;
-				}
+			.st0:hover {
+				fill: var(--region-color-light);
 			}
-	
+
 			text {
 				font-family: 'hk grotesk';
 				font-size: var(--text-fz);
 				display: var(--text-display);
+			}
+
+			@media (prefers-color-scheme: dark) { 
+				.st0 {
+					fill: #1b191f;
+					stroke: #323135;
+				}
+
+				.st0:hover {
+					fill: var(--region-color-dark);
+				}
+
+				text {
+					fill: white;
+				}
 			}
 		</style>
 	</defs>

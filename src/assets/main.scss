@@ -1,0 +1,120 @@
+/*
+This file contains specific styles for ListenMap page.
+*/
+
+@import "theme.scss";
+
+* {
+    font-family: "HK Grotesk", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+    background-color: var(--clr-bg-alt);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > *:not(.main) {
+        padding: 8px 64px;
+    }
+
+    @media screen and (max-width: 768px) {
+        > *:not(.main) {
+            padding: 8px 16px;
+        }
+    }
+}
+
+.header,
+.footer {
+    z-index: 1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--clr-bg);
+    border-bottom: 1px solid var(--clr-border);
+	flex-wrap: wrap;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+	letter-spacing: -0.045em;
+
+    .header-logo {
+        flex: 1 1 auto;
+        width: auto;
+        height: 64px;
+        background-image: var(--logo);
+        background-repeat: no-repeat;
+		background-size: contain;
+    }
+
+    nav {
+		flex: 0 1 auto;
+		display: flex;
+		gap: 10px;
+		align-items: center;
+
+		.nav-btn {
+			font-size: 17px;
+			text-decoration: none;
+
+			&.current {
+				text-decoration: underline;
+			}
+
+			&.important {
+				color: var(--clr-red);
+
+				&:hover {
+					color: var(--clr-red-alt);
+				}
+			}
+		}
+	}
+}
+
+.main {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 0;
+}
+
+.tooltip {
+    position: absolute;
+    font-size: 1.3em;
+    margin: 0;
+    padding: 8px;
+    background-color: var(--clr-bg-alt);
+    color: var(--clr-text);
+    user-select: none;
+    pointer-events: none;
+    display: none;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--border-radius);
+}
+
+.footer {
+    background-color: var(--clr-bg-alt);
+	color: var(--clr-text-alt);
+	display: block;
+	font-weight: 500;
+	margin-top: auto;
+	padding-top: 20px;
+	font-size: smaller;
+    border-top: 1px solid var(--clr-border);
+}
