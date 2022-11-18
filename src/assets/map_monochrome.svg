@@ -3,9 +3,13 @@
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 900" style="enable-background:new 0 0 1000 900;" xml:space="preserve">
 	<defs>
-		<style type="text/css">	
+		<style type="text/css">
+			* {
+				font-family: "HK Grotesk", sans-serif;
+			}
 			svg {
 				cursor: grab;
+				--map-zoom: 1em;
 			}
 			.st0 {
 				fill:#D6D6D6;
@@ -18,6 +22,14 @@
 			}
 			.region:hover path:hover {
 				fill: var(--depart-bg, #333333ff);
+			}
+			svg:not(.txt-visible) .depart-text {
+				display: none;
+				opacity: 0;
+			}
+			.depart-text {
+				font-size: var(--map-zoom);
+				z-index: 10;
 			}
 		</style>
 	</defs>

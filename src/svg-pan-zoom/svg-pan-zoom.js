@@ -339,6 +339,16 @@ SvgPanZoom.prototype.zoomAtPoint = function (zoomScale, point, zoomAbsolute) {
 		newCTM = oldCTM.multiply(modifier);
 
 	if (newCTM.a !== oldCTM.a) {
+		const TEXT_ZOOM = 1.25
+		const tempZoom = this.getZoom()
+		this.svg.style.setProperty("--map-zoom", ((20/(tempZoom)))+"px")
+		if((tempZoom < TEXT_ZOOM) && this.svg.classList.contains("txt-visible")) {
+			this.svg.classList.remove("txt-visible");
+			document.querySelector("#tooltip").style.opacity="1"
+		}else if((tempZoom > TEXT_ZOOM) && !this.svg.classList.contains("txt-visible")) {
+			this.svg.classList.add("txt-visible");
+			document.querySelector("#tooltip").style.opacity="0"
+		}
 		this.viewport.setCTM(newCTM);
 	}
 };

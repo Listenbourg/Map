@@ -16,8 +16,28 @@ window.addEventListener("load", async () => {
 
 	await sleep(150);
 
-	const SVG_ELEM = SVG_OBJECT.contentDocument
-		?.documentElement as unknown as SVGSVGElement;
+	const SVG_ELEM = SVG_OBJECT.contentDocument!.documentElement as unknown as SVGSVGElement;
+
+	SVG_ELEM.querySelectorAll("g.depart").forEach((group) => {
+		const textEl = document.createElementNS(
+			'http://www.w3.org/2000/svg',
+			'text'
+		  );
+		  const path = group.querySelector("path") as SVGPathElement;
+		  const pathRect = path.getBBox();
+		  textEl.setAttribute('x', (pathRect.x + pathRect.width / 2).toString());
+		  textEl.setAttribute('y', (pathRect.y + pathRect.height / 2).toString());
+		  textEl.setAttribute('dominant-baseline', 'middle');
+		  textEl.setAttribute('text-anchor', 'middle');
+		  textEl.classList.add("depart-text");
+		  textEl.style.userSelect = 'none';
+		  textEl.style.webkitUserSelect = 'none';
+		  textEl.style.pointerEvents = 'none';
+		  const departName = group.getAttribute("data-depart-name")!;
+		  const regionName = group.parentElement!.getAttribute("data-region-name")!;
+		  textEl.innerHTML = `${departName} (${regionName})`;;
+		  group.appendChild(textEl);
+	})
 	await sleep(50);
 	const { setTooltip, hideTooltip } = Tooltip(
 		SVG_OBJECT,
@@ -51,6 +71,7 @@ window.addEventListener("load", async () => {
 	map.resize();
 	map.fit();
 	map.center();
+	window.map = map;
 	window.addEventListener("resize", () => {
 		resizeHeight();
 		map.resize();
