@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1"
 	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 900" style="enable-background:new 0 0 1000 900;" xml:space="preserve">
+	xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 900" style="enable-background:new 0 0 1000 900;" class="txt-hide" xml:space="preserve">
 	<defs>
 		<style type="text/css">
 			* {
 				font-family: "HK Grotesk", sans-serif;
+    			transition: all 0.1s ease-in-out;
+    			transition: translate 0s linear;
 			}
 			svg {
 				cursor: grab;
@@ -23,13 +25,34 @@
 			.region:hover path:hover {
 				fill: var(--depart-bg, #333333ff);
 			}
-			svg:not(.txt-visible) .depart-text {
+			svg.txt-hide .depart-text {
 				display: none;
 				opacity: 0;
 			}
 			.depart-text {
-				font-size: var(--map-zoom);
+				font-size: var(--map-font-zoom, 1em);
+				font-weight: 100;
+				font-style: italic;
+				fill: #444;
 				z-index: 10;
+			}
+			.city-text {
+				font-size: calc(0.8 * var(--map-font-zoom, 1em));
+				font-weight: bold;
+				fill: #444;
+				transform: translateY(calc(var(--map-font-zoom, 1) * -0.5));
+			}
+			svg.txt-hide .city-text {
+				display: none;
+				opacity: 0;
+			}
+			.city circle {
+				r: calc(3 / var(--map-zoom, 1));
+			}
+
+			svg {
+				--map-zoom: 1;
+				--map-font-zoom: 20px;
 			}
 		</style>
 	</defs>
@@ -363,6 +386,113 @@
 		s-8.3,3.2-11.9,3.7c-3.5,0.5-14.9,0.5-17.2,0c-2.3-0.5-2.7-2.1-6.3-2.5c-3.6-0.4-6.5-0.5-8.9,0.3c-2.4,0.7-5.6,1.2-8,0.3
 		c-2.4-0.9-13.3-4.6-20.3-5.3c-7-0.7-12.1-1.7-15,0.1c-2.9,1.8-4.2,3.8-6.1,5.4c-1.8,1.6-7.1-0.9-8-2.3c-0.9-1.4-0.9-6.2-4.4-6.1
 		C538.7,287.4,536.4,287.1,528.2,287.9z" />
+		</g>
+	</g>
+	<g class="cities">
+		<g class="city" data-city-name="Lurenberg">
+			<circle cx="604.821" cy="214.1" r="9" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Oftenbaum">
+			<circle cx="341.394" cy="20.7733" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Meylan">
+			<circle cx="489.707" cy="26.368" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Machenbach">
+			<circle cx="439.1" cy="185" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Oldenberg">
+			<circle cx="588.821" cy="162.322" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Talenberg">
+			<circle cx="552.142" cy="206.088" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Bassballer">
+			<circle cx="362.05" cy="200.088" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Gasparländ">
+			<circle cx="241.95" cy="230.1" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Chadigkeit">
+			<circle cx="200.386" cy="247.386" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Wirgolkein">
+			<circle cx="43" cy="270.3" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Kaufluss">
+			<circle cx="638.532" cy="339.417" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Aschlöss">
+			<circle cx="474.75" cy="400.835" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Kleinard">
+			<circle cx="356.65" cy="358" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Nachtland">
+			<circle cx="262" cy="392.893" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Achbach">
+			<circle cx="268" cy="589" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Lichessörd">
+			<circle cx="341.394" cy="633.288" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Bouretab">
+			<circle cx="84.4014" cy="621.288" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Illamasita">
+			<circle cx="127.17" cy="750.289" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Ardos">
+			<circle cx="202.5" cy="762.289" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Veroja">
+			<circle cx="245.6" cy="789.902" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Elefpar">
+			<circle cx="395.609" cy="844" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Antonos">
+			<circle cx="507.8" cy="809.5" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Olvasser">
+			<circle cx="475" cy="662.45" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Die Angeles">
+			<circle cx="368.05" cy="509" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Linchenbinch">
+			<circle cx="447.1" cy="551" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Kraftstadt">
+			<circle cx="615.601" cy="493.4" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Centburg">
+			<circle cx="587" cy="465.533" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Goßard">
+			<circle cx="593" cy="639.4" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="La Galinera">
+			<circle cx="739" cy="668.45" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Franquo sur Mer">
+			<circle cx="837.572" cy="480.163" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Saint Marie">
+			<circle cx="910" cy="529.02" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Carmac">
+			<circle cx="784" cy="436.896" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Meistermärt">
+			<circle cx="695.409" cy="358" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Alsbourg">
+			<circle cx="185.818" cy="400.835" r="5" fill="#db0000" />
+		</g>
+		<g class="city" data-city-name="Straford">
+			<circle cx="167.3" cy="503" r="5" fill="#db0000" />
 		</g>
 	</g>
 </svg>

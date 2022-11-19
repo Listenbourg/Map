@@ -341,12 +341,13 @@ SvgPanZoom.prototype.zoomAtPoint = function (zoomScale, point, zoomAbsolute) {
 	if (newCTM.a !== oldCTM.a) {
 		const TEXT_ZOOM = 1.25
 		const tempZoom = this.getZoom()
-		this.svg.style.setProperty("--map-zoom", ((20/(tempZoom)))+"px")
-		if((tempZoom < TEXT_ZOOM) && this.svg.classList.contains("txt-visible")) {
-			this.svg.classList.remove("txt-visible");
+		this.svg.style.setProperty("--map-zoom",tempZoom)
+		this.svg.style.setProperty("--map-font-zoom", ((20/(tempZoom)))+"px")
+		if((tempZoom < TEXT_ZOOM) && !this.svg.classList.contains("txt-hide")) {
+			this.svg.classList.add("txt-hide");
 			document.querySelector("#tooltip").style.opacity="1"
-		}else if((tempZoom > TEXT_ZOOM) && !this.svg.classList.contains("txt-visible")) {
-			this.svg.classList.add("txt-visible");
+		}else if((tempZoom > TEXT_ZOOM) && this.svg.classList.contains("txt-hide")) {
+			this.svg.classList.remove("txt-hide");
 			document.querySelector("#tooltip").style.opacity="0"
 		}
 		this.viewport.setCTM(newCTM);

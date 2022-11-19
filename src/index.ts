@@ -38,6 +38,29 @@ window.addEventListener("load", async () => {
 		  textEl.innerHTML = `${departName} (${regionName})`;;
 		  group.appendChild(textEl);
 	})
+
+
+
+SVG_ELEM.querySelectorAll("g.city").forEach((group) => {
+	const textEl = document.createElementNS(
+		'http://www.w3.org/2000/svg',
+		'text'
+	  );
+	  const path = group.querySelector("circle") as SVGCircleElement;
+	  const pathRect = path.getBBox();
+	  textEl.setAttribute('x', (pathRect.x + pathRect.width / 2).toString());
+	  textEl.setAttribute('y', (pathRect.y + pathRect.height / 2).toString());
+	  textEl.setAttribute('dominant-baseline', 'middle');
+	  textEl.setAttribute('text-anchor', 'middle');
+	  textEl.style.userSelect = 'none';
+	  textEl.style.webkitUserSelect = 'none';
+	  textEl.style.pointerEvents = 'none';
+	  textEl.innerHTML = group.attributes.getNamedItem("data-city-name")!.value;
+	  textEl.classList.add("city-text");
+	  group.appendChild(textEl);
+})
+
+
 	await sleep(50);
 	const { setTooltip, hideTooltip } = Tooltip(
 		SVG_OBJECT,
@@ -71,7 +94,6 @@ window.addEventListener("load", async () => {
 	map.resize();
 	map.fit();
 	map.center();
-	window.map = map;
 	window.addEventListener("resize", () => {
 		resizeHeight();
 		map.resize();
